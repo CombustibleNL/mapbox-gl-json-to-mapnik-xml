@@ -47,7 +47,7 @@ function Style(layer, markerUri, callback) {
 function Layer(glayers) {
   var mlayers = []
   glayers.forEach(function(e) {
-    if (e.type !== 'background') {
+    if (e.type !== 'background' && e.type !== undefined) {
       var layer = {
         '@srs': srs_mector,
         '@name': e['source-layer'],
@@ -92,13 +92,13 @@ function gl2xml(globj, callback) {
 
   mMap = Map(srs_mector, glayers,markerUri)
   if (fontUri) {
-    mMap.Map['@font-directory'] =fontUri.replace(/\\/g,'\/')
+    mMap.Map['@font-directory'] = fontUri.replace(/\\/g,'\/')
   }
   mMap.Map.Layer = Layer(glayers)
   mMap.Map.Style = []
   mMap.Map.Parameters = para.Parameters
   glayers.forEach(function(e) {
-    if (e.type !== 'background'&&source_obj[e.source].type!=='video') {
+    if (e.type !== 'background' && e.type !== undefined && source_obj[e.source].type!=='video') {
       if(uti.contains(shield_array,e.id)){
         e.shield=true;
       }

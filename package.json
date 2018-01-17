@@ -16,7 +16,7 @@
     "tilejson": "^1.0.1",
     "tilelive": "^5.12.2",
     "tilelive-http": "^0.11.1",
-    "tilelive-vector": "^3.9.3"
+    "tilelive-vector": "^3.9.4"
   },
   "directories": {
     "test": "test"
