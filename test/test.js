@@ -3,7 +3,7 @@ var tilelive = require('tilelive')
 var Vector = require('tilelive-vector')
 var Http = require('tilelive-http')
 var gl2xml = require('../index')
-var style = require('./style')
+var style = require('./streets')
 
 
 Vector.registerProtocols(tilelive)
@@ -12,7 +12,7 @@ Http(tilelive)
 gl2xml(style, function(err, xml) {
   if (err) return console.log(err)
 
-  fs.writeFileSync('result.xml', xml)
+  fs.writeFileSync('streets.xml', xml)
 
   var uri = {
     protocol: 'vector:',
@@ -20,7 +20,7 @@ gl2xml(style, function(err, xml) {
     scale: 1,
     format: 'png'
   }
-
+/*
   tilelive.load(uri, function(err, source) {
     if (err) return console.log(err)
 
@@ -32,4 +32,5 @@ gl2xml(style, function(err, xml) {
       fs.writeFileSync('0-0-0.png', data)
     })
   })
+  */
 })
